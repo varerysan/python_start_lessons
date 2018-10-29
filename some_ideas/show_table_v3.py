@@ -1,6 +1,5 @@
 # Показ красивой таблицы с ценами
 
-
 sym_V = "\u2503"
 sym_H = "\u2501"
 sym_LT = "\u250F"
@@ -9,7 +8,11 @@ sym_LB = "\u2517"
 sym_RB = "\u251b"
 sym_MT = "\u2533"
 sym_MB = "\u253B"
+green = '\033[92m'
+black = '\033[90m'
+reset = '\033[0m'
 
+# https://gist.github.com/chrisopedia/8754917
 
 def print_line_top(width1, width2):
     print(sym_LT + 
@@ -38,4 +41,7 @@ def show_table(table):
 
 menu = {"Картошка":25, "Суп": 17, "Компот": 12}
 
+
+print(green)
 show_table(menu)
+print(reset)
