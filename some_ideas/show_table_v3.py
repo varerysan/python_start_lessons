@@ -13,6 +13,8 @@ black = '\033[90m'
 reset = '\033[0m'
 
 # https://gist.github.com/chrisopedia/8754917
+# http://jrgraphix.net/r/Unicode/2500-257F
+# https://en.wikipedia.org/wiki/Box-drawing_character
 
 def print_line_top(width1, width2):
     print(sym_LT + 
