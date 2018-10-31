@@ -40,7 +40,19 @@ def say_number(number):
     if number >= 10 and number <=19:
         return ten_units[number-10]
     
+    if number >= 20 and number <= 99:
+        ed = number % 10
+        res = tens[number // 10]
+        if ed > 0:
+            res += " " + units[number % 10]
+
+        return res
+    
     
 number = int(input("Введите число:"))
 text = say_number(number)
 print("Текст:", text)
+
+
+for n in range(100):
+    print(n,"-", say_number(n))
