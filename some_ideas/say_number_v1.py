@@ -23,8 +23,22 @@ def say_number(number):
             "восемьдесят",
             "девяносто"]
     
+    ten_units = ["десять",
+                 "одиннадцать",
+                 "двенадцать",
+                 "тринадцать",
+                 "четырнадцать",
+                 "пятнадцать",
+                 "шестнадцать",
+                 "семнадцать",
+                 "восемнадцать",
+                 "девятнадцать"]
+    
     if number >=0 and number <= 9:
         return units[number]
+    
+    if number >= 10 and number <=19:
+        return ten_units[number-10]
     
     
 number = int(input("Введите число:"))
