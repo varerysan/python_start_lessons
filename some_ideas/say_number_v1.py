@@ -103,9 +103,8 @@ def say_3(number, rod="м"):
     return hund + part2
 
 
-def get_names():
-
-    names = [  [ "тысяча", "ж"],
+def get_base_names():
+    return  [  [ "тысяч", "ж"],
                [ "миллион", "м"],
                [ "миллиард", "м"],
                [ "триллион", "м"],
@@ -127,17 +126,40 @@ def get_names():
                [ "новемдециллион", "м"],
                [ "вигинтиллион", "м"]	]
 
-    return names
+def get_form(number):
+    if number == 1:
+        return 0
+    elif number in [2, 3, 4]:
+        return 1
+    elif number in [0, 5, 6, 7, 8, 9]:
+        return 2
 
-def create_word(pos, rod):
-    pass
+def create_word(pos, form):
+    base_names = get_base_names()
+    if pos > 0:
+        suffix = ["","а","ов"]
+    else:
+        suffix = ["а","и",""]
+    return base_names[pos][0] + suffix[form]
+        
+def get_rod(pos):
+    names = get_base_names()
+    return names[pos][1]
     
+
+nums = [1, 2, 5]
 
     
 #number = int(input("Введите число:"))
 #text = say_number(number)
 #print("Текст:", text)
 
+for pos in range(5):
+    text = ""
+    for form in range(3):
+        word = create_word(pos, form)
+        text += word + " "
+    print(text)
 
-for n in range(1000):
-    print(n,"==={}===".format(say_3(n,"м")))
+#for n in range(1000):
+#    print(n,"==={}===".format(say_3(n,"м")))
