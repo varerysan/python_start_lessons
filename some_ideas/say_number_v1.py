@@ -1,5 +1,5 @@
 # распечатать введеное число по-русски
-
+import random
 # 0-9
 def get_unit(number, rod="м"):
     units = [[""],
@@ -56,27 +56,7 @@ def say_number(number, rod="м"):
             res += " " + get_unit(number % 10, rod)
 
         return res
-    
-def get_name(number, pos):
-    text = [ ["тысяча","тысячи","тысяч"],
-             ["миллион","миллиона","миллионов"],
-             ["миллиард","миллиарда","миллиардов"]             
-            ]
 
-    curr_text = text[pos]
-
-    if number == 1:
-        return curr_text[0]
-    elif number in [2, 3, 4]:
-        return curr_text[1]
-    elif number in [0, 5, 6, 7, 8, 9]:
-        return curr_text[2]
-    else:
-        return ""        
-    
-#---------------------------------
-#   теория Zero0 - терри Гильям
-#=================================
     
 def get_hund(number):
     hunds = ["",
@@ -126,15 +106,21 @@ def get_base_names():
                [ "новемдециллион", "м"],
                [ "вигинтиллион", "м"]	]
 
-def get_form(number):
-    if number == 1:
+def get_form(full_number): 
+    number = full_number % 100   
+    if number >= 10 and number <= 20:
+        return 2   
+    ed = number % 10    
+    if ed == 1:
         return 0
-    elif number in [2, 3, 4]:
+    elif ed in [2, 3, 4]:
         return 1
-    elif number in [0, 5, 6, 7, 8, 9]:
+    elif ed in [0, 5, 6, 7, 8, 9]:
         return 2
 
-def create_word(pos, form):
+
+def create_word(pos, number):
+    form = get_form(number)
     base_names = get_base_names()
     if pos > 0:
         suffix = ["","а","ов"]
@@ -156,10 +142,21 @@ nums = [1, 2, 5]
 
 for pos in range(5):
     text = ""
-    for form in range(3):
-        word = create_word(pos, form)
-        text += word + " "
+    for number in nums:
+        word = str(number) + " " + create_word(pos, number)
+        text += word + ", "
     print(text)
+    
+    
+for n in range(10):
+    number = random.randint(0,999)
+    for pos in [0,1,2]:
+        rod = get_rod(pos)
+        text = say_3(number,rod)
+        text += " " + create_word(pos, number)        
+        print("{}: {}".format(number,text))
+
+
 
 #for n in range(1000):
 #    print(n,"==={}===".format(say_3(n,"м")))
