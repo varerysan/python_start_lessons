@@ -133,30 +133,51 @@ def get_rod(pos):
     return names[pos][1]
     
 
-nums = [1, 2, 5]
 
-    
+
 #number = int(input("Введите число:"))
 #text = say_number(number)
 #print("Текст:", text)
 
-for pos in range(5):
-    text = ""
-    for number in nums:
-        word = str(number) + " " + create_word(pos, number)
-        text += word + ", "
-    print(text)
+def tests_1():
+    for pos in range(5):
+        text = ""
+        for number in [1, 2, 5]:
+            word = str(number) + " " + create_word(pos, number)
+            text += word + ", "
+        print(text)
     
-    
-for n in range(10):
-    number = random.randint(0,999)
-    for pos in [0,1,2]:
-        rod = get_rod(pos)
-        text = say_3(number,rod)
-        text += " " + create_word(pos, number)        
-        print("{}: {}".format(number,text))
+def test_2():
+    for n in range(10):
+        number = random.randint(0,999)
+        for pos in [0,1,2]:
+            rod = get_rod(pos)
+            text = say_3(number,rod)
+            text += " " + create_word(pos, number)        
+            print("{}: {}".format(number,text))
 
 
+def split_numer(text_number):
+    parts = []
+    
+    while len(text_number) > 0:
+        parts.append(text_number[-3:])
+        text_number = text_number[:-3]
+        
+    parts.reverse()
+    return parts
+    
+
+def test_3():
+    parts = split_numer("36452698492834")
+    for p in parts:
+        print(p)
+
+
+
+#test_1()
+#test_2()
+test_3()
 
 #for n in range(1000):
 #    print(n,"==={}===".format(say_3(n,"м")))
