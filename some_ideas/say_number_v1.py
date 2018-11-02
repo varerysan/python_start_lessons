@@ -162,6 +162,8 @@ def say_parts(parts):
     return full_text
 
 def say_full_number(number):
+    if number == "0":
+        return "ноль"
     return say_parts(split_numer(number))
     
 
@@ -203,7 +205,8 @@ def test_4():
 #test_3()
 #test_4()
     
-number = input("Введите число:")
+#number = input("Введите число:")
+number = "1000000000"
 text = say_full_number(number)
 comma = get_comma_number(number)
 print(comma, "Текст:", text)
