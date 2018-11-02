@@ -136,33 +136,11 @@ def get_rod(pos):
     return names[pos][1]
     
 
-
-
-#number = int(input("Введите число:"))
-#text = say_number(number)
-#print("Текст:", text)
-
-def tests_1():
-    for pos in range(5):
-        text = ""
-        for number in [1, 2, 5]:
-            word = str(number) + " " + create_word(pos, number)
-            text += word + ", "
-        print(text)
-    
-    
 def create_number_and_name(number, pos):
     rod = get_rod(pos)
     text = say_3(number,rod)
     text += " " + create_word(pos, number)
     return text        
-
-def test_2():
-    for n in range(10):
-        number = random.randint(0,999)
-        for pos in [0,1,2]:
-            text = create_number_and_name(number, pos)     
-            print("{}: ={}=".format(number,text))
 
 
 def split_numer(text_number):
@@ -182,24 +160,50 @@ def say_parts(parts):
         full_text += create_number_and_name(int(part), curr_pos) + " "  
         curr_pos -= 1
     return full_text
-        
 
+def say_full_number(number):
+    return say_parts(split_numer(number))
+    
+
+def get_comma_number(number):
+    return ",".join(split_numer(number))    
+
+def test_1():
+    for pos in range(5):
+        text = ""
+        for number in [1, 2, 5]:
+            word = str(number) + " " + create_word(pos, number)
+            text += word + ", "
+        print(text)
+    
+
+def test_2():
+    for n in range(10):
+        number = random.randint(0,999)
+        for pos in [0,1,2]:
+            text = create_number_and_name(number, pos)     
+            print("{}: ={}=".format(number,text))
+     
 def test_3():
     parts = split_numer("36452698492834")
     for p in parts:
         print(p)
 
 def test_4():
-    number = "36452698492834"
+    number = "36458979972698492834"
     parts = split_numer(number)
     text_parts = ",".join(parts)
     text = say_parts(parts)
     print(text_parts, ":", text)
+    
+
 
 #test_1()
 #test_2()
 #test_3()
-test_4()
-
-#for n in range(1000):
-#    print(n,"==={}===".format(say_3(n,"м")))
+#test_4()
+    
+number = input("Введите число:")
+text = say_full_number(number)
+comma = get_comma_number(number)
+print(comma, "Текст:", text)
