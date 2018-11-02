@@ -84,7 +84,8 @@ def say_3(number, rod="м"):
 
 
 def get_base_names():
-    return  [  [ "тысяч", "ж"],
+    return  [  [ "", "м" ],
+               [ "тысяч", "ж"],
                [ "миллион", "м"],
                [ "миллиард", "м"],
                [ "триллион", "м"],
@@ -122,7 +123,9 @@ def get_form(full_number):
 def create_word(pos, number):
     form = get_form(number)
     base_names = get_base_names()
-    if pos > 0:
+    if pos == 0:
+        suffix = ["","",""]
+    elif pos > 1:
         suffix = ["","а","ов"]
     else:
         suffix = ["а","и",""]
@@ -147,14 +150,19 @@ def tests_1():
             text += word + ", "
         print(text)
     
+    
+def create_number_and_name(number, pos):
+    rod = get_rod(pos)
+    text = say_3(number,rod)
+    text += " " + create_word(pos, number)
+    return text        
+
 def test_2():
     for n in range(10):
         number = random.randint(0,999)
         for pos in [0,1,2]:
-            rod = get_rod(pos)
-            text = say_3(number,rod)
-            text += " " + create_word(pos, number)        
-            print("{}: {}".format(number,text))
+            text = create_number_and_name(number, pos)     
+            print("{}: ={}=".format(number,text))
 
 
 def split_numer(text_number):
@@ -167,17 +175,31 @@ def split_numer(text_number):
     parts.reverse()
     return parts
     
+def say_parts(parts):
+    curr_pos = len(parts) - 1
+    full_text = ""
+    for part in parts:
+        full_text += create_number_and_name(int(part), curr_pos) + " "  
+        curr_pos -= 1
+    return full_text
+        
 
 def test_3():
     parts = split_numer("36452698492834")
     for p in parts:
         print(p)
 
-
+def test_4():
+    number = "36452698492834"
+    parts = split_numer(number)
+    text_parts = ",".join(parts)
+    text = say_parts(parts)
+    print(text_parts, ":", text)
 
 #test_1()
 #test_2()
-test_3()
+#test_3()
+test_4()
 
 #for n in range(1000):
 #    print(n,"==={}===".format(say_3(n,"м")))
