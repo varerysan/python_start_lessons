@@ -7,11 +7,14 @@ class Human:
     def print(self):
         print("Human: {}, {}".format(self._name, self._age))
         
-    def less(self, other):
+    def __lt__(self, other):
         return self._age < other._age
-    
+
+
     def get_age(self):
         return self._age
+    
+
         
         
 
@@ -28,8 +31,14 @@ data.append( Human("aaa-300", 300 ))
 value = max(data, key = lambda v: v.get_age() )
 value.print()
 
-print("----- sorted -------")
-data2 = sorted(data,  key = lambda v: v.get_age() ) 
+print("----- sorted v1 -------")
+data1 = sorted(data,  key = lambda v: v.get_age() ) 
+    
+for d in data1:
+    d.print()
+
+print("----- sorted v2 -------")
+data2 = sorted(data) 
     
 for d in data2:
     d.print()
