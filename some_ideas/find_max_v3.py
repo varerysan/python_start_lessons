@@ -27,3 +27,9 @@ data.append( Human("aaa-300", 300 ))
 
 value = max(data, key = lambda v: v.get_age() )
 value.print()
+
+print("----- sorted -------")
+data2 = sorted(data,  key = lambda v: v.get_age() ) 
+    
+for d in data2:
+    d.print()
