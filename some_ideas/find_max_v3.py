@@ -42,3 +42,9 @@ data2 = sorted(data)
     
 for d in data2:
     d.print()
+    
+print("----- min v2 -------")
+min_value_2 = min(data) 
+
+min_value_2.print()
+    
