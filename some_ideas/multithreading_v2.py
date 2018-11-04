@@ -39,8 +39,7 @@ thread1.start()
 thread2 = ForThread(10,100)
 thread2.start()
 
-
-
+_
 for n in range(3):    
     time.sleep(2)
     thread2.set_value(200+n)
