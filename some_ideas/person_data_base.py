@@ -60,7 +60,11 @@ class Base:
     def read(self):
         self._persons = []
         with open(self._file_name, "r") as file:
-            p = file.read()
+            p = Person.read_v2(file)
+            if p:
+                self._persons.append(p)
+            else:
+                return
 
         
 def print_menu():
@@ -71,11 +75,11 @@ def print_menu():
 
 base = Base()
 
-p = Person("John", "Donny", 1995)
-base.add(p)
-
-p = Person("Aaa", "Bbbbb", 1990)
-base.add(p)
+#p = Person("John", "Donny", 1995)
+#base.add(p)
+#
+#p = Person("Aaa", "Bbbbb", 1990)
+#base.add(p)
 
 
 
