@@ -16,8 +16,11 @@ class Person:
         file.write(self._surname + "\n")
         file.write(str(self._birth_year) + "\n")
         
+    def read(self, file):
+        self._name = file.read()
+        self._surname = file.read()
+        self._birth_year = file.read()
         
-
 
 # Cosmos 3M
 # лапота. Энергия
@@ -35,23 +38,42 @@ class Base:
         self._persons.append(person)
         
     def write(self):
-        with open(self._file_name,"w") as file:
+        with open(self._file_name, "w") as file:
             for p in self._persons:
                 p.write(file)
+
+    def read(self):
+        with open(self._file_name, "r") as file:
+            file.read()
+
         
+def print_menu():
+    print("1. Считать базу из файла")
+    print("2. Записать базу в файл")
+    print("3. Распечатать базу")
+    print("4. Выход")
 
 base = Base()
 
-p = Person("John", "Donny", 1995)
-base.add(p)
+#p = Person("John", "Donny", 1995)
+#base.add(p)
 
-p = Person("Aaa", "Bbbbb", 1990)
-base.add(p)
+#p = Person("Aaa", "Bbbbb", 1990)
+#base.add(p)
 
 
 
-base.print()
+while True:
+    print_menu()
+    case = input("Ваше действие")
 
-base.write()
+    if case == "1":
+        base.read()
+    elif case == "2":
+        base.write()
+    elif case == "3":
+        base.print()
+    elif case == "4":
+        break
 
 
