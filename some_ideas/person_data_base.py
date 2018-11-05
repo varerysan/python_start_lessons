@@ -23,10 +23,19 @@ class Person:
         self._surname = file.read()
         self._birth_year = file.read()
         return True
+    
+    @staticmethod
+    def read_v2(file):
+        name = file.read()
+        if not name:
+            return None
+        surname = file.read()
+        birth_year = file.read()
+        p = Person(name, surname, birth_year)
+        return p
         
-
-# Cosmos 3M
-# лапота. Энергия
+        
+        
 
 class Base:
     def __init__(self):
