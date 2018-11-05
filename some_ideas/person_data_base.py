@@ -18,8 +18,11 @@ class Person:
         
     def read(self, file):
         self._name = file.read()
+        if not self._name:
+            return False
         self._surname = file.read()
         self._birth_year = file.read()
+        return True
         
 
 # Cosmos 3M
@@ -32,7 +35,10 @@ class Base:
     
     def print(self):
         for p in self._persons:
+            print("-" * 30)
             p.print()
+        print("-" * 30)
+
             
     def add(self, person):
         self._persons.append(person)
@@ -43,8 +49,9 @@ class Base:
                 p.write(file)
 
     def read(self):
+        self._persons = []
         with open(self._file_name, "r") as file:
-            file.read()
+            p = file.read()
 
         
 def print_menu():
@@ -55,17 +62,17 @@ def print_menu():
 
 base = Base()
 
-#p = Person("John", "Donny", 1995)
-#base.add(p)
+p = Person("John", "Donny", 1995)
+base.add(p)
 
-#p = Person("Aaa", "Bbbbb", 1990)
-#base.add(p)
+p = Person("Aaa", "Bbbbb", 1990)
+base.add(p)
 
 
 
 while True:
     print_menu()
-    case = input("Ваше действие")
+    case = input("Ваше действие:")
 
     if case == "1":
         base.read()
