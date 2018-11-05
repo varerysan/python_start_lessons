@@ -35,6 +35,13 @@ class Person:
         p = Person(name, surname, birth_year)
         return p
         
+    
+    @staticmethod
+    def read_kb():
+        name = input("Name:")
+        surname = input("Surname:")
+        birth = int(input("Birth year:"))
+        return Person(name, surname, birth)
         
         
 
@@ -67,6 +74,11 @@ class Base:
                     self._persons.append(p)
                 else:
                     break
+                
+    def read_kb(self):
+        p = Person.read_kb()
+        self._persons.append(p)
+        
 
         
 def print_menu():
@@ -97,6 +109,8 @@ while True:
     elif case == "3":
         base.print()
     elif case == "4":
+        base.read_kb()
+    elif case == "E":
         break
 
 
