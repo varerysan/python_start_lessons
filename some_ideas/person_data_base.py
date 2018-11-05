@@ -1,4 +1,5 @@
 # простой пример небольшой базы даннх людей
+import json
 
 class Person:
     def __init__(self, name, surname, birth):
@@ -7,9 +8,9 @@ class Person:
         self._birth_year = birth
         
     def print(self):
-        print("Name:", self._name)
-        print("Surname:", self._surname)
-        print("Birth year:", self._birth_year)
+        print("Name:={}=".format(self._name))
+        print("Surname:={}=".format( self._surname))
+        print("Birth year:={}=".format( self._birth_year))
         
     def write(self, file):
         file.write(self._name + "\n")
@@ -17,20 +18,20 @@ class Person:
         file.write(str(self._birth_year) + "\n")
         
     def read(self, file):
-        self._name = file.read()
+        self._name = file.readline()
         if not self._name:
             return False
-        self._surname = file.read()
-        self._birth_year = file.read()
+        self._surname = file.readline()
+        self._birth_year = file.readline()
         return True
     
     @staticmethod
     def read_v2(file):
-        name = file.read()
+        name = file.readline().rstrip("\n")
         if not name:
             return None
-        surname = file.read()
-        birth_year = file.read()
+        surname = file.readline().rstrip("\n")
+        birth_year = file.readline().rstrip("\n")
         p = Person(name, surname, birth_year)
         return p
         
@@ -60,18 +61,20 @@ class Base:
     def read(self):
         self._persons = []
         with open(self._file_name, "r") as file:
-            p = Person.read_v2(file)
-            if p:
-                self._persons.append(p)
-            else:
-                return
+            while True:
+                p = Person.read_v2(file)
+                if p:
+                    self._persons.append(p)
+                else:
+                    break
 
         
 def print_menu():
     print("1. Считать базу из файла")
     print("2. Записать базу в файл")
     print("3. Распечатать базу")
-    print("4. Выход")
+    print("4. Ввести данные")
+    print("E. Выход")
 
 base = Base()
 
