@@ -139,7 +139,8 @@ def get_rod(pos):
 def create_number_and_name(number, pos):
     rod = get_rod(pos)
     text = say_3(number,rod)
-    text += " " + create_word(pos, number)
+    name = create_word(pos, number) if number != 0 else ""
+    text += " " + name
     return text        
 
 
@@ -206,7 +207,7 @@ def test_4():
 #test_4()
     
 #number = input("Введите число:")
-number = "1000000000"
+number = "1000001000"
 text = say_full_number(number)
 comma = get_comma_number(number)
 print(comma, "Текст:", text)
