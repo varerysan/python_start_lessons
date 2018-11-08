@@ -1,5 +1,8 @@
 # sleep меньше секунды
 import time
+#import os
+
+#os.system("clear")
 
 num_per_sec  = 100
 period = 10 # in seconds
