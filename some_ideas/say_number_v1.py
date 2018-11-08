@@ -207,11 +207,11 @@ def test_4():
 #test_4()
     
 #number = input("Введите число:")
-number = "1000001000"
+number = "1000101000"
+number = "98034597623497623498740893456982347861348734"
 if not number.isdigit():
     print("Это не число")
 else:
     text = say_full_number(number)
     comma = get_comma_number(number)
     print(comma, "Текст:", text)
-
