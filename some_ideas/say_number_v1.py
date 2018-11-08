@@ -208,6 +208,10 @@ def test_4():
     
 #number = input("Введите число:")
 number = "1000001000"
-text = say_full_number(number)
-comma = get_comma_number(number)
-print(comma, "Текст:", text)
+if not number.isdigit():
+    print("Это не число")
+else:
+    text = say_full_number(number)
+    comma = get_comma_number(number)
+    print(comma, "Текст:", text)
+
