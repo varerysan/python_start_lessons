@@ -8,15 +8,14 @@ username = input("Введите имя пользователя:")
 password = input("Введите пароль:")
 
 data = password.encode(encoding="utf-8")
-print("data={}=".format(data))
+#print("data={}=".format(data))
 
 crypt = hashlib.sha256(data).hexdigest()
 print("Crypt={}=".format(crypt))
 
-correct_pass = logindata.get(username,None)
-if correct_pass == password:
+correct_pass = logindata.get(username, None)
+if correct_pass == crypt:
     print("Добро пожаловать")
 else:
     print("Доступ запрещён.")
-
 
