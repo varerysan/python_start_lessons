@@ -1,4 +1,4 @@
-import sys
+#import sys
 import time
 for n in range(10):
     print(n, "kjhskfhwfhwiuefhwief")
@@ -8,6 +8,7 @@ print("wait")
 time.sleep(1)
 
 for v in range(5):
-    sys.stdout.write("\033[F") 
+    print("\033[F", end="")
+    #sys.stdout.write("\033[F") 
 
 print("================")
