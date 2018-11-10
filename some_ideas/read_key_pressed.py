@@ -3,6 +3,8 @@
 # adapted from https://github.com/recantha/EduKit3-RC-Keyboard/blob/master/rc_keyboard.py
  
 import sys, termios, tty, os, time
+import fcntl
+
  
 def getch():
     fd = sys.stdin.fileno()
@@ -16,15 +18,24 @@ def getch():
     return ch
  
 button_delay = 0.2
+fd = sys.stdin.fileno()
+fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
  
 while True:
     char = getch()
+    
+    print("={}=".format(char), end="")
  
     if (char == "p"):
         print("Stop!")
         exit(0)
- 
-    if (char == "a"):
+    
+    elif (not char):
+        print("No char")
+        time.sleep(button_delay)
+
+    elif (char == "a"):
         print("Left pressed")
         time.sleep(button_delay)
  
