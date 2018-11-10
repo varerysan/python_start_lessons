@@ -10,7 +10,6 @@ def show_vals(data):
         print(symbols[val],end="")
         
         
-
 def create_sin():
     data = []
     for x in range(30):
@@ -21,6 +20,7 @@ def create_sin():
             y = 7
         data.append(y)
     return data
+
 
 data = create_sin()            
 print("data=", data)
