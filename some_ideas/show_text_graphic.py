@@ -24,6 +24,9 @@ def create_sin():
 
 data = create_sin()            
 print("data=", data)
+
+show_vals(data)
+print()
             
     
     
