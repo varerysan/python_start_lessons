@@ -67,7 +67,7 @@ def show_pixels():
     print("=" * 30)
     
 
-def show_field(data, width, height):
+def show_field(field, width, height):
     for y in range(0, height, 2):
         for x in range(0, width, 2):
             d3 = field[y * width + x]
@@ -84,6 +84,12 @@ def show_field(data, width, height):
         print()
         
         
+def fill_field(field, width, height):
+    for y in range(height):
+        field[y*width+0] = 1
+    for y in range(height):
+        field[y*width+height-1] = 1        
+        
 def test_field():
     width = 30
     height = 20
@@ -91,7 +97,8 @@ def test_field():
     for y in range(width):
         for x in range(height):
             field.append(0)
-    show_field(field)
+    fill_field(field, width, height)
+    show_field(field, width, height)
 
 def show_line():
     for b in blocks:
