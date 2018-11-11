@@ -1,5 +1,7 @@
 #
 
+import time
+
 pixels = [" ", "\u2596", "\u2597", "\u2598", "\u2599", 
           "\u259A", "\u259B", "\u259C", "\u259D", "\u259E", "\u259F",
           "\u258C", "\u2590", "\u2584", 
@@ -82,6 +84,9 @@ def show_field(field, width, height):
             print(s, end="")
 
         print()
+        
+def up_field(height):
+    print("\033[F" * (height//2), end="")
 
 def put_pixel(field, width, height, x, y):
     if x >=0 and x < width and y >= 0 and y < height:
@@ -121,12 +126,36 @@ def test_field():
     draw_line(field, width, height, 0, 0, width-1, height-1 )
     
     show_field(field, width, height)
+    
+    x = 5
+    y = 3
+    sx = 1
+    sy = 1
+    for n in range(500):
+        put_pixel(field, width, height, x, y)
+        show_field(field, width, height )
+        up_field(height)
+        x += sx
+        y += sy
+        if x < 1 or x > width - 2:
+            sx = -sx
+        if y < 1 or y > height - 2:
+            sy = -sy   
+        time.sleep(0.01)
+    
+    
 
 def show_line():
     for b in blocks:
         print("\u2591{}".format(b), end="")   
         #print("\u2588{}".format(b), end="")   
-    print()    
+    print() 
+    
+    
+
+
+
+
 
 #for b in blocks:
 #    print("\u2591{}|\u2503\u256D\u256E".format(b), end="")   
