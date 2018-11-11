@@ -43,7 +43,10 @@ blocks = ["\u2580",
 
 
 for b in blocks:
-    print("\u2591{}".format(b), end="")
+    print("\u2591{}|\u2503".format(b), end="")   
+print()
 
-
+for b in blocks:
+    print("\u2591{}".format(b), end="")   
+print()
 
