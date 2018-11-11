@@ -88,10 +88,14 @@ def fill_field(field, width, height):
     for y in range(height):
         field[y*width+0] = 1
     for y in range(height):
-        field[y*width+height-1] = 1        
+        field[y*width+width-1] = 1 
+    for x in range(width):
+        field[0*width+x] = 1
+    for x in range(width):
+        field[(height-1)*width+x] = 1
         
 def test_field():
-    width = 30
+    width = 50
     height = 20
     field = []
     for y in range(width):
