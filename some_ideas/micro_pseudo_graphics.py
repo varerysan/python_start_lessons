@@ -65,10 +65,33 @@ def show_pixels():
     for s in sym_blocks:
         print("{}=".format(s), end="")
     print("=" * 30)
+    
+
+def show_field(data, width, height):
+    for y in range(0, height, 2):
+        for x in range(0, width, 2):
+            d3 = field[y * width + x]
+            d2 = field[y * width + x + 1]
+            d1 = field[(y+1) * width + x ]
+            d0 = field[(y+1) * width + x + 1]
+            
+            v = d3 * 8 + d2 * 4 + d1 * 2 + d0
         
+            s = sym_blocks[v]
 
+            print(s, end="")
 
-
+        print()
+        
+        
+def test_field():
+    width = 30
+    height = 20
+    field = []
+    for y in range(width):
+        for x in range(height):
+            field.append(0)
+    show_field(field)
 
 def show_line():
     for b in blocks:
@@ -91,5 +114,8 @@ print("-" * 30)
 
 show_pixels()
     
+print()
+
+test_field()
 
 
