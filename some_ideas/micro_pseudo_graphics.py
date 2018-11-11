@@ -57,12 +57,15 @@ sym_blocks = [
               "\u2580",  # 1100
               "\u259C",  # 1101
               "\u259B",  # 1110
-              "\u2588",  # 1111
-
-        
-        
+              "\u2588"  # 1111
         ]
 
+
+def show_pixels():
+    for s in sym_blocks:
+        print("{}=".format(s), end="")
+    print("=" * 30)
+        
 
 
 
@@ -83,6 +86,10 @@ def show_line():
     
 for n in range(32):
     show_line()
+    
+print("-" * 30)
+
+show_pixels()
     
 
 
