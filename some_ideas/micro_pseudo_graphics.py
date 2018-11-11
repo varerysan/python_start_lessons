@@ -102,9 +102,10 @@ def fill_field(field, width, height):
 def draw_line(field, width, height, x1, y1, x2, y2):
     delta_x = abs(x1-x2)
     delta_y = abs(y1-y2)
-    for n in range(max(delta_x, delta_y)):
-        x = int(x1 + (x2 - x1) * n / delta_x)
-        y = int(y1 + (y2 - y1) * n / delta_y)
+    num = max(delta_x, delta_y)
+    for n in range(num):
+        x = int(x1 + (x2 - x1) * n / num)
+        y = int(y1 + (y2 - y1) * n / num)
         put_pixel(field, width, height, x, y)
             
         
@@ -112,8 +113,8 @@ def test_field():
     width = 50
     height = 20
     field = []
-    for y in range(width):
-        for x in range(height):
+    for y in range(height):
+        for x in range(width):
             field.append(0)
     fill_field(field, width, height)
     
