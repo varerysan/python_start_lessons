@@ -82,7 +82,10 @@ def show_field(field, width, height):
             print(s, end="")
 
         print()
-        
+
+def put_pixel(field, width, height, x, y):
+    if x >=0 and x < width and y >= 0 and y < height:
+        field[y*width+x] = 1
         
 def fill_field(field, width, height):
     for y in range(height):
@@ -93,6 +96,17 @@ def fill_field(field, width, height):
         field[0*width+x] = 1
     for x in range(width):
         field[(height-1)*width+x] = 1
+
+        
+
+def draw_line(field, width, height, x1, y1, x2, y2):
+    delta_x = abs(x1-x2)
+    delta_y = abs(y1-y2)
+    for n in range(max(delta_x, delta_y)):
+        x = int(x1 + (x2 - x1) * n / delta_x)
+        y = int(y1 + (y2 - y1) * n / delta_y)
+        put_pixel(field, width, height, x, y)
+            
         
 def test_field():
     width = 50
@@ -102,6 +116,9 @@ def test_field():
         for x in range(height):
             field.append(0)
     fill_field(field, width, height)
+    
+    draw_line(field, width, height, 0, 0, width-1, height-1 )
+    
     show_field(field, width, height)
 
 def show_line():
