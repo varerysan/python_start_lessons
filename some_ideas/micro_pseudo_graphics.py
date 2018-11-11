@@ -38,15 +38,51 @@ blocks = ["\u2580",
           "\u259C",
           "\u259D",
           "\u259E",
-          "\u259F"
-          ]
+          "\u259F"]
 
 
-for b in blocks:
-    print("\u2591{}|\u2503".format(b), end="")   
-print()
+sym_blocks = [
+              " ",  # 0000
+              "\u2597",  # 0001
+              "\u2596",  # 0010
+              "\u2584",  # 0011
+              "\u259D",  # 0100
+              "\u2590",  # 0101
+              "\u259E",  # 0110
+              "\u259F",  # 0111
+              "\u2598",  # 1000
+              "\u259A",  # 1001
+              "\u258C",  # 1010
+              "\u2599",  # 1011
+              "\u2580",  # 1100
+              "\u259C",  # 1101
+              "\u259B",  # 1110
+              "\u2588",  # 1111
 
-for b in blocks:
-    print("\u2591{}".format(b), end="")   
-print()
+        
+        
+        ]
+
+
+
+
+
+def show_line():
+    for b in blocks:
+        print("\u2591{}".format(b), end="")   
+        #print("\u2588{}".format(b), end="")   
+    print()    
+
+#for b in blocks:
+#    print("\u2591{}|\u2503\u256D\u256E".format(b), end="")   
+#print()
+#
+#for b in blocks:
+#    print("\u2591{}".format(b), end="")   
+#print()
+    
+for n in range(32):
+    show_line()
+    
+
 
