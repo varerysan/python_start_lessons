@@ -143,9 +143,9 @@ def update_field(field, width, height):
     up_field(height)      
     
 
-def draw_line_3D(line):
-    p1 = line[0]
-    p2 = line[1]
+def draw_line_3D(field, width, height, line):
+    p0 = line[0]
+    p1 = line[1]
     
     x1 = p0[0]
     y1 = p0[1]
@@ -155,7 +155,34 @@ def draw_line_3D(line):
     y2 = p1[1]
     z2 = p1[2]
     
+    draw_line(field, width, height, x1, y1, x2, y2)
     
+    
+def create_object():
+    lines = [ [ [ 10, 10,-10],[ 10,-10,-10] ],
+              [ [ 10,-10,-10],[-10,-10,-10] ],
+              [ [-10,-10,-10],[-10, 10,-10] ],
+              [ [-10, 10,-10],[ 10, 10,-10] ],
+              
+              [ [ 10, 10,-10],[ 10, 10, 10] ], 
+              [ [ 10,-10,-10],[ 10,-10, 10] ],
+              [ [-10,-10,-10],[-10,-10, 10] ],
+              [ [-10, 10,-10],[-10, 10, 10] ],
+              
+              [ [ 10, 10, 10],[ 10,-10, 10] ],
+              [ [ 10,-10, 10],[-10,-10, 10] ],
+              [ [-10,-10, 10],[-10, 10, 10] ],
+              [ [-10, 10, 10],[ 10, 10, 10] ] ]
+        
+    return lines 
+
+
+def rotate_point(pnt, ax, ay, az):
+    pass    
+
+
+def rotate_object(obj, ax, ay, az ):
+    pass
     
         
     
