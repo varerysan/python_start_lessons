@@ -1,4 +1,5 @@
 # Разбиение двузначного числа на десятки и единицв
+# author: Valery Mosyagin
 
 while True:
     number = int(input("Введите двузначное число:"))

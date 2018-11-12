@@ -1,4 +1,6 @@
 #
+# author: Valery Mosyagin
+
 import math
 import time
 

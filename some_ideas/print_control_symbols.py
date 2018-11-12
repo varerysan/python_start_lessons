@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 #import sys
 import time
 for n in range(10):

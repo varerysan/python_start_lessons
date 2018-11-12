@@ -1,3 +1,4 @@
+# author: Valery Mosyagin
 # sleep меньше секунды
 import time
 #import os

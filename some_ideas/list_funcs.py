@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 spisok = [10, 20, 30]
 print(spisok)
 for value in spisok:

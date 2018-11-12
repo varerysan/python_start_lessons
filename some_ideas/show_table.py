@@ -1,4 +1,5 @@
 # Показ красивой таблицы с ценами
+# author: Valery Mosyagin
 
 def print_line(width1, width2):
     print("+" + 

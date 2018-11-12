@@ -1,3 +1,4 @@
+# author: Valery Mosyagin
 # Человек задумывает число, а компьютер угадывает
 
 min_human = 1

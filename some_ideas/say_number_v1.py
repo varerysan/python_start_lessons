@@ -1,4 +1,6 @@
 # распечатать введеное число по-русски
+# author: Valery Mosyagin
+
 import random
 # 0-9
 def get_unit(number, rod="м"):

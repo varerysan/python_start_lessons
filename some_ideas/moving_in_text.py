@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 import time
 
 def show_field(field,width,height):

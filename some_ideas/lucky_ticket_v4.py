@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 # Проверка счастливый билет или нет
 
 def get_sum(part):

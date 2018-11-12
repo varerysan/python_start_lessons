@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 # по названию месяца определяется сезон
 
 month_name = input("Ввелите название месяца:")

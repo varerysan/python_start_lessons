@@ -1,5 +1,7 @@
 # многопоточность
 # -*- coding: utf-8 -*-
+# author: Valery Mosyagin
+
 #import random
 import time
 from threading import Thread

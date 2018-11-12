@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 # простой пример небольшой базы даннх людей
 import json
 

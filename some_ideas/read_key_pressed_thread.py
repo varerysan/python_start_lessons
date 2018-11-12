@@ -1,5 +1,7 @@
 # pppppp !/usr/bin/env python
 # -*- coding: utf-8 -*-
+# author: Valery Mosyagin
+
 from __future__ import absolute_import, division, unicode_literals, print_function
  
 import tty, termios

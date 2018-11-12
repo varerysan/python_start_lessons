@@ -1,3 +1,4 @@
+# author: Valery Mosyagin
 # Игра. Компьютер задусывет число, человек угадывает
 import random
 

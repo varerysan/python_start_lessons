@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# author: Valery Mosyagin
  
 # adapted from https://github.com/recantha/EduKit3-RC-Keyboard/blob/master/rc_keyboard.py
  

@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 temp = float(input("Введите температуру:"))
 
 if temp < 0:

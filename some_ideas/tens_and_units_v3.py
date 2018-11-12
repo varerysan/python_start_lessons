@@ -1,4 +1,5 @@
 # Разбиение трёхзначного числа на сотни, десятки и единицы
+# author: Valery Mosyagin
 
 while True:
     number = int(input("Введите трёхзначное число:"))

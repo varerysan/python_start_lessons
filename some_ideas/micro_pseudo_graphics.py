@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 #
 import math
 import time
@@ -276,7 +278,7 @@ def test_field():
         
     dx = width / 2
     dy  = height / 2 
-    for n in range(100):
+    for n in range(300):
         cube2 = rotate_object(cube, ax, ay, az, dx, dy)
         clear_field(field)
         draw_object(field, width, height, cube2)

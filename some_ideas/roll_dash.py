@@ -1,4 +1,6 @@
 #roll the dash
+# author: Valery Mosyagin
+
 from time import sleep
 symbols = ["|", "/", "-", "\\" ]
 

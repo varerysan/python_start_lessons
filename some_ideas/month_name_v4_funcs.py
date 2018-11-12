@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 # по названию месяца определяется сезон
 
 def get_season(month_name):

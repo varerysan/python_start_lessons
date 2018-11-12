@@ -1,3 +1,4 @@
+# author: Valery Mosyagin
 
 class Human:
     def __init__(self, name, age):

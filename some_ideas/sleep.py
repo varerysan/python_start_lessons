@@ -1,4 +1,5 @@
 #
+# author: Valery Mosyagin
 import time
 
 for n in range(1,10):

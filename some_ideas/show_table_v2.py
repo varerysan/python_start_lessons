@@ -1,3 +1,4 @@
+# author: Valery Mosyagin
 # Показ красивой таблицы с ценами
 
 

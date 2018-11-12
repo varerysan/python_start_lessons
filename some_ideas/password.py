@@ -1,3 +1,5 @@
+# author: Valery Mosyagin
+
 logindata = {"admin": "123", 
              "johh": "PasS",
              "user": "test"}
