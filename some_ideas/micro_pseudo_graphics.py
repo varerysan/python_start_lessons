@@ -1,6 +1,7 @@
 #
 import math
 import time
+import random
 
 pixels = [" ", "\u2596", "\u2597", "\u2598", "\u2599", 
           "\u259A", "\u259B", "\u259C", "\u259D", "\u259E", "\u259F",
@@ -115,11 +116,11 @@ def draw_line(field, width, height, x1, y1, x2, y2):
             
 
 def draw_circle(field, width, height, xc, yc, r):
-    num = r * 2
+    num = r * 7
     for n in range(num):
         angle = (math.pi * 2 / num ) * n
-        x = xc + r * cos(angle)
-        y = yc + r * sin(angle)
+        x = int(xc + r * math.cos(angle))
+        y = int(yc + r * math.sin(angle))
         put_pixel(field, width, height, x, y)
     
 def test_field():
@@ -134,6 +135,13 @@ def test_field():
     draw_line(field, width, height, 0, 0, width-1, height-1 )
     
     show_field(field, width, height)
+    
+    for n in range(5):
+        x = random.randint(0, width - 1)    
+        y = random.randint(0, height - 1)
+        draw_circle(field, width, height, x, y, 5)
+        
+    
     
     x = 5
     y = 3
