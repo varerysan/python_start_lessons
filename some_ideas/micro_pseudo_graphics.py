@@ -177,7 +177,6 @@ def test_field():
     time.sleep(1)
 
     clear_field(field)
-    
     xc = int(width/2)
     yc = int(height/2)
     for r in range(2, 20):
@@ -186,10 +185,18 @@ def test_field():
         update_field(field, width, height)
 
     time.sleep(1)
-
     
     clear_field(field)
+    xc = int(width/2)
+    yc = int(height/2)
+    for r in range(2, 20):
+        draw_ellipse(field, width, height, xc, yc, r*2, r)
+        time.sleep(0.03)
+        update_field(field, width, height)
 
+    time.sleep(1)    
+    
+    clear_field(field)
     x = 5
     y = 3
     sx = 1
