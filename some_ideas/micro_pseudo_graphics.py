@@ -113,10 +113,14 @@ def draw_line(field, width, height, x1, y1, x2, y2):
         y = int(y1 + (y2 - y1) * n / num)
         put_pixel(field, width, height, x, y)
             
-        
+
+def draw_circle(field, width, height, x, y, r):
+       
+    
+    
 def test_field():
-    width = 50
-    height = 20
+    width = 50*2
+    height = 20*2
     field = []
     for y in range(height):
         for x in range(width):
