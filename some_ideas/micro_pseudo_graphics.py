@@ -108,7 +108,7 @@ def fill_field(field, width, height):
 def draw_line(field, width, height, x1, y1, x2, y2):
     delta_x = abs(x1-x2)
     delta_y = abs(y1-y2)
-    num = max(delta_x, delta_y)
+    num = int(max(delta_x, delta_y))
     for n in range(num):
         x = int(x1 + (x2 - x1) * n / num)
         y = int(y1 + (y2 - y1) * n / num)
@@ -158,6 +158,11 @@ def draw_line_3D(field, width, height, line):
     draw_line(field, width, height, x1, y1, x2, y2)
     
     
+def draw_object(field, width, height, obj):
+    for line in obj:
+        draw_line_3D(field, width, height, line)
+    
+    
 def create_object():
     lines = [ [ [ 10, 10,-10],[ 10,-10,-10] ],
               [ [ 10,-10,-10],[-10,-10,-10] ],
@@ -178,12 +183,41 @@ def create_object():
 
 
 def rotate_point(pnt, ax, ay, az):
-    pass    
+    x = pnt[0]
+    y = pnt[1]
+    z = pnt[2]
+    
+    # x - z
+    # y - x 
+    # z - y 
+    
+    # rotate by Z
+    x1 = x * math.cos(ax) - y * math.sin(ax)
+    y1 = x * math.sin(ax) + y * math.cos(ax)
+    z1 = z
+    
+    # rotate by Y
+    z2 = z1 * math.cos(ax) - x1 * math.sin(ax)
+    x2 = z1 * math.sin(ax) + x1 * math.cos(ax)
+    y2 = y1
 
+    # rotate by X
+    y3 = y2 * math.cos(ax) - z2 * math.sin(ax)
+    z3 = y2 * math.sin(ax) + z2 * math.cos(ax)
+    x3 = x2
+    
+    return [x3,y3,z3]
+    
 
 def rotate_object(obj, ax, ay, az ):
-    pass
-    
+    obj2 = []
+    for line in obj:
+        p1 = rotate_point(line[0], ax, ay, az)
+        p2 = rotate_point(line[1], ax, ay, az)
+        line2 = [p1, p2]
+        obj2.append(line2)
+        
+    return obj2
         
     
 def test_field():
@@ -198,9 +232,9 @@ def test_field():
     draw_line(field, width, height, 0, 0, width-1, height-1 )
     
     update_field(field, width, height)
+    
     time.sleep(1)
-    
-    
+       
     clear_field(field)
     for n in range(5):
         x = random.randint(0, width - 1)    
@@ -218,6 +252,28 @@ def test_field():
     update_field(field, width, height)
           
     time.sleep(1)
+    
+    clear_field(field)
+    cube = create_object()
+    ax = 1.2
+    ay = 0.7
+    az = 2.1
+    
+    for n in range(20):
+        cube2 = rotate_object(cube, ax, ay, az)
+        clear_field(field)
+        draw_object(field, width, height, cube2)
+        update_field(field, width, height)
+        time.sleep(0.03)
+        ax +=  0.2
+        ay +=  0.1
+        az += -0.1
+        if ax > math.pi * 2:
+            ax -= math.pi * 2
+        if ay > math.pi * 2:
+            ay -= math.pi * 2            
+        if az < 0:
+            az += math.pi * 2    
 
     clear_field(field)
     xc = int(width/2)
