@@ -122,6 +122,26 @@ def draw_circle(field, width, height, xc, yc, r):
         x = int(xc + r * math.cos(angle))
         y = int(yc + r * math.sin(angle))
         put_pixel(field, width, height, x, y)
+        
+        
+def draw_ellipse(field, width, height, xc, yc, rx, ry):
+    num = max(rx, ry) * 7
+    for n in range(num):
+        angle = (math.pi * 2 / num ) * n
+        x = int(xc + rx * math.cos(angle))
+        y = int(yc + ry * math.sin(angle))
+        put_pixel(field, width, height, x, y)
+        
+        
+def clear_field(field):
+    for n in range(len(field)):
+        field[n] = 0
+
+
+def update_field(field, width, height):
+    show_field(field, width, height)
+    up_field(height)      
+        
     
 def test_field():
     width = 50*2
@@ -134,15 +154,30 @@ def test_field():
     
     draw_line(field, width, height, 0, 0, width-1, height-1 )
     
-    show_field(field, width, height)
+    update_field(field, width, height)
+    time.sleep(1)
     
+    
+    clear_field(field)
     for n in range(5):
         x = random.randint(0, width - 1)    
         y = random.randint(0, height - 1)
         draw_circle(field, width, height, x, y, 5)
-        
-    
-    
+    update_field(field, width, height)
+                
+    time.sleep(1)
+
+    clear_field(field)
+    for n in range(5):
+        x = random.randint(0, width - 1)    
+        y = random.randint(0, height - 1)
+        draw_ellipse(field, width, height, x, y, 10, 5)
+    update_field(field, width, height)
+          
+    time.sleep(1)
+
+    clear_field(field)
+   
     x = 5
     y = 3
     sx = 1
@@ -158,6 +193,7 @@ def test_field():
         if y < 1 or y > height - 2:
             sy = -sy   
         time.sleep(0.01)
+    update_field(field, width, height)
     
     
 
