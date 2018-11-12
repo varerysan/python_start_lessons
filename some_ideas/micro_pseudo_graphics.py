@@ -1,5 +1,5 @@
 #
-
+import math
 import time
 
 pixels = [" ", "\u2596", "\u2597", "\u2598", "\u2599", 
@@ -114,9 +114,13 @@ def draw_line(field, width, height, x1, y1, x2, y2):
         put_pixel(field, width, height, x, y)
             
 
-def draw_circle(field, width, height, x, y, r):
-       
-    
+def draw_circle(field, width, height, xc, yc, r):
+    num = r * 2
+    for n in range(num):
+        angle = (math.pi * 2 / num ) * n
+        x = xc + r * cos(angle)
+        y = yc + r * sin(angle)
+        put_pixel(field, width, height, x, y)
     
 def test_field():
     width = 50*2
