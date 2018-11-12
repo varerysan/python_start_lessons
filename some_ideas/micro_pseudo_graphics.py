@@ -209,11 +209,22 @@ def rotate_point(pnt, ax, ay, az):
     return [x3,y3,z3]
     
 
-def rotate_object(obj, ax, ay, az ):
+def rotate_object(obj, ax, ay, az, dx, dy ):
     obj2 = []
     for line in obj:
         p1 = rotate_point(line[0], ax, ay, az)
         p2 = rotate_point(line[1], ax, ay, az)
+        
+        p1[0] *= 2
+        p2[0] *= 2
+        
+        p1[0] += dx
+        p1[1] += dy
+        
+        p2[0] += dx
+        p2[1] += dy
+        
+        
         line2 = [p1, p2]
         obj2.append(line2)
         
@@ -259,21 +270,36 @@ def test_field():
     ay = 0.7
     az = 2.1
     
-    for n in range(20):
-        cube2 = rotate_object(cube, ax, ay, az)
+    dax =  0.2 / 2
+    day =  0.1 / 2
+    daz = -0.1 / 2
+        
+    dx = width / 2
+    dy  = height / 2 
+    for n in range(100):
+        cube2 = rotate_object(cube, ax, ay, az, dx, dy)
         clear_field(field)
         draw_object(field, width, height, cube2)
         update_field(field, width, height)
         time.sleep(0.03)
-        ax +=  0.2
-        ay +=  0.1
-        az += -0.1
+        ax +=  dax
+        ay +=  day
+        az +=  daz
+        
         if ax > math.pi * 2:
             ax -= math.pi * 2
+        if ax < 0:
+            ax += math.pi * 2
+            
         if ay > math.pi * 2:
-            ay -= math.pi * 2            
+            ay -= math.pi * 2
+        if ay < 0:
+            ay += math.pi * 2
+            
+        if az > math.pi * 2:
+            az -= math.pi * 2
         if az < 0:
-            az += math.pi * 2    
+            az += math.pi * 2
 
     clear_field(field)
     xc = int(width/2)
