@@ -234,8 +234,8 @@ def rotate_object(obj, ax, ay, az, dx, dy ):
         
     
 def test_field():
-    width = 50*2
-    height = 20*2
+    width = 50*2*2
+    height = 20*3
     field = []
     for y in range(height):
         for x in range(width):
@@ -321,7 +321,18 @@ def test_field():
         time.sleep(0.03)
         update_field(field, width, height)
 
-    time.sleep(1)    
+    time.sleep(1)  
+    
+    clear_field(field)
+    for n in range(200):
+        x = random.randint(0,width-1)
+        y = random.randint(0,height-1)
+        put_pixel(field, width, height, x, y)
+        #time.sleep(0.03)
+        update_field(field, width, height)    
+    
+    time.sleep(1)  
+
     
     clear_field(field)
     x = 5
