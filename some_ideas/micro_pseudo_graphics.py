@@ -141,6 +141,22 @@ def clear_field(field):
 def update_field(field, width, height):
     show_field(field, width, height)
     up_field(height)      
+    
+
+def draw_line_3D(line):
+    p1 = line[0]
+    p2 = line[1]
+    
+    x1 = p0[0]
+    y1 = p0[1]
+    z1 = p0[2]
+    
+    x2 = p1[0]
+    y2 = p1[1]
+    z2 = p1[2]
+    
+    
+    
         
     
 def test_field():
