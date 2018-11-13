@@ -121,8 +121,8 @@ def draw_circle(field, width, height, xc, yc, r):
     num = r * 7
     for n in range(num):
         angle = (math.pi * 2 / num ) * n
-        x = int(xc + r * math.cos(angle))
-        y = int(yc + r * math.sin(angle))
+        x = int(round(xc + r * math.cos(angle)))
+        y = int(round(yc + r * math.sin(angle)))
         put_pixel(field, width, height, x, y)
         
         
@@ -130,8 +130,8 @@ def draw_ellipse(field, width, height, xc, yc, rx, ry):
     num = max(rx, ry) * 7
     for n in range(num):
         angle = (math.pi * 2 / num ) * n
-        x = int(xc + rx * math.cos(angle))
-        y = int(yc + ry * math.sin(angle))
+        x = int(round(xc + rx * math.cos(angle)))
+        y = int(round(yc + ry * math.sin(angle)))
         put_pixel(field, width, height, x, y)
         
         
