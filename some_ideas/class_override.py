@@ -1,6 +1,8 @@
 # author: Valery Mosyagin
 # class method override
 
+# https://pythonworld.ru/osnovy/peregruzka-operatorov.html
+
 class A:
     def __init__(self, name):
         self._name = name
@@ -13,6 +15,9 @@ class A:
         
     def __call__(self, id):
         print("called by () name={}= id={}=".format(self._name, id))
+        
+    def __getitem__(self, key):
+        print("called by [] ={}=".format(key))
         
 
 a = A("hello")
@@ -31,3 +36,4 @@ else:
 a(100)
 b(200)
 
+a[123]
