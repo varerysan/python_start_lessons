@@ -19,6 +19,9 @@ class A:
     def __getitem__(self, key):
         print("called by [] ={}=".format(key))
         
+    def __str__(self):
+        return "convert to string name={}=".format(self._name)
+        
 
 a = A("hello")
 b = A("test")
@@ -37,3 +40,8 @@ a(100)
 b(200)
 
 a[123]
+
+#convert to string
+string = str(a)
+print("string:", string)
+
