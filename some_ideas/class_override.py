@@ -11,6 +11,9 @@ class A:
         else:
             return False
         
+    def __call__(self, id):
+        print("called by () name={}= id={}=".format(self._name, id))
+        
 
 a = A("hello")
 b = A("test")
@@ -24,6 +27,7 @@ if b:
     print("b is OK")
 else:
     print("b is not OK")
+    
+a(100)
+b(200)
 
-        
-        
