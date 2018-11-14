@@ -6,10 +6,10 @@ class A:
         self._name = name
         
     def __bool__(self):
-        if self._name = "test":
-            return False
-        else:
+        if self._name == "test":
             return True
+        else:
+            return False
         
 
 a = A("hello")
