@@ -13,5 +13,14 @@ def decor(func):
 def test():
     print("test function")
     
-    
+@decor
+@decor
+def test2():
+    print("test2")
+
+print("=" * 30)    
 test()
+
+print("=" * 30)    
+test2()
+print("=" * 30)    
