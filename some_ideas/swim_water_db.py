@@ -13,7 +13,9 @@ else:
     minTemp, maxTemp = data[name]
     temp = int(input("Введите температуру воды:"))
     
-    if temp >= minTemp and temp <= maxTemp:
-        print("Хорошая температура воды.")
+    if temp < minTemp:
+        print("Вода слишком холодная.")
+    elif temp > maxTemp:
+        print("Вода слишком горячая")
     else:
-        print("Температуры воды не очень.")
+        print("Хорошая температура воды.")
