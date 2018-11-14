@@ -9,10 +9,25 @@
 
 import re
 
-text = " - 10*x^2 + 20*x - 7 = 0"
+text = " 10*x^2 + 20*x - 7 = 0"
+text = "-x^2-25=0"
 
 t2 = re.sub(" ","",text)
 print("t2=",t2)
 
-t3 = re.split("=",t2)
-print("t3", t3)
+t3,t4 = re.split("=",t2)
+print("t3=", t3)
+print("t4=", t4)
+
+t5 = re.findall("[-\+]?[^\+-]+",t3)
+print("t5=", t5)
+print("-"*10)
+
+coefs = {}
+
+for t6 in t5:
+    t7 = re.split("\*",t6)
+    print("\nfor t6=", t6)
+    print("t7=", t7)
+    
+    
