@@ -29,12 +29,38 @@ def parse(equation):
             
     return data
 
+def parse_tokens(tokens):
+    data = {'x^2':[], 'x':[], '1':[]}
+    for t in tokens:
+        t3 = re.split("\*", t['token'])
+        print("t3=", t3)
+        
+        #dat = 
+        dat = {}
+        for t4 in t3:
+            try:
+                f = float(t4)
+                print("f=", f)
+                dat['value'] = f
+            except:
+                if t4 == 'x':
+                    print("t4=x")
+                    dat['var'] = 'x'
+                elif t4 == 'x^2':
+                    print("t4=x^2")
+                    dat['var'] = 'x^2'
+                else:
+                    print("t4=error")  
+                    
+        
+                                
 
 def test(text):
     print("----------------")
     print("eq={}=".format(text))
     tokens = parse(text)
     print("tokens=", tokens)
+    parse_tokens(tokens)
 
     
 #-------------------------
@@ -47,61 +73,6 @@ text = "5*x*x - 10*x + 5 = 0"
 test(" 10*x^2 + 20*x - 7 = 0")
 test("-x^2-25=0")
 test("5*x*x - 10*x + 5 = 0")
-
-print("=============================")
-
-
-
-
-t2 = re.sub(" ","",text)
-print("t2=",t2)
-
-t3,t4 = re.split("=",t2)
-print("t3=", t3)
-print("t4=", t4)
-
-t5 = re.findall("[-\+]?[^\+-]+",t3)
-print("t5=", t5)
-print("-"*10)
-
-coefs = {}
-
-for t6 in t5:
-    t7 = re.split("\*",t6)
-    print("\nfor t6=", t6)
-    print("t7=", t7)
-    
-    
-print("---------")
-# get sign
-data = []
-for n in t5:
-    if n:
-        if n[0] == "+":
-            print("n={} sign=[{}]=".format(n,"+"))
-            part = n[1:]
-            print("part={}=".format(part))
-            token = {"sign": "+", "token": n[1:]}
-        elif n[0] == "-":
-            print("n={} sign=[{}]=".format(n,"-"))
-            part = n[1:]
-            print("part={}=".format(part))
-            token = {"sign": "-", "token": n[1:]}
-
-        else:
-            print("n={} sign=[{}]=".format(n,"+"))
-            part = n
-            print("part={}=".format(part))  
-            token = {"sign": "+", "token": n}
-            
-        data.append(token)
-
-            
-    print("---")
-print("================")
-
-for d in data:
-    print("token:", d)
-    print("----------")
+test("7.2*x^2 - 10.15*x + 1.5 = 0")
 
 
