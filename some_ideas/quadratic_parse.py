@@ -11,6 +11,7 @@ import re
 
 text = " 10*x^2 + 20*x - 7 = 0"
 text = "-x^2-25=0"
+#text = "5*x*x - 10*x + 5 = 0"
 
 t2 = re.sub(" ","",text)
 print("t2=",t2)
@@ -30,4 +31,24 @@ for t6 in t5:
     print("\nfor t6=", t6)
     print("t7=", t7)
     
+    
+print("---------")
+# get sign
+data = []
+for n in t5:
+    if n:
+        if n[0] == "+":
+            print("n={} sign=[{}]=".format(n,"+"))
+            part = n[1:]
+            print("part={}=".format(part))
+        elif n[0] == "-":
+            print("n={} sign=[{}]=".format(n,"-"))
+            part = n[1:]
+            print("part={}=".format(part))
+        else:
+            print("n={} sign=[{}]=".format(n,"+"))
+            part = n
+            print("part={}=".format(part))  
+            
+    print("---")
     
