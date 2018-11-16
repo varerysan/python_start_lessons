@@ -5,6 +5,7 @@
 # 5*x**2 + 7*x -10 =0
 #
 import re
+import math
 
 
 def parse(equation):
@@ -77,6 +78,22 @@ def solve(summa):
     
     print("a={}, b={}, c={}".format(a,b,c))
     
+    if a == 0:
+        # linear
+        print("Linear")
+    else:
+        d = b * b - 4 * a * c;
+        if d > 0:
+            x1 = ( -b + math.sqrt(d) ) / ( 2 * a )
+            x2 = ( -b - math.sqrt(d) ) / ( 2 * a )
+            print("x1={} x2={}".format(x1, x2))
+        elif d == 0:
+            x = -b / (2 * a)
+            print("x={}".format(x))
+        else:
+            print("No roots")
+            
+    
     
 
 def test(text):
@@ -104,6 +121,10 @@ def test(text):
 
 test(" 10*x^2 + 20*x - 7 = 5") # error
 test("-x^2-25=0")
+test("x^2-25=0")
+test("x^2-14*x+49=0")
+test("x^2-x*16+64=0")
+test("x^2*2-x*32+128=0")
 #test("5*x*x - 10*x + 5 = 0")
 test("7.2*x^2 - 10.15*x + 1.5 = 0")
 test("x+x-x+x^2-10*x^2=0")
