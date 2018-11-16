@@ -26,11 +26,9 @@ def parse(equation):
             
     return data
 
-def parse_tokens(tokens):
-    
-    print("----------- tokens -------------")
 
-    data = {'x^2':[], 'x':[], '1':[]}
+def parse_tokens(tokens):
+    data = []
     for t in tokens:
         dat = {'sign': t['sign']}
         for mul in re.split("\*", t['token']):
@@ -44,33 +42,45 @@ def parse_tokens(tokens):
                     dat['var'] = 'x^2'
                 else:
                     dat['error'] = True
-        
         if 'value' not in dat:
             dat['value'] = 1
             
         if 'var' not in dat:
             dat['var'] = 1
             
-        print(dat)
-                    
+        if dat['sign'] == '-':
+            dat['value'] *= -1
         
-                                
+        del dat['sign']
+            
+        data.append(dat)        
+    return data
+
+    
+                    
 
 def test(text):
     print("\n\n------ Example -------")
     print("eq[{}]\n".format(text))
     tokens = parse(text)
     print("tokens=", tokens)
-    parse_tokens(tokens)
+    data = parse_tokens(tokens)
+    
+    print("------ parsed tokens -------")
+    for d in data:
+        print("d=", d)
 
 
 test(" 10*x^2 + 20*x - 7 = 0")
 test("-x^2-25=0")
 #test("5*x*x - 10*x + 5 = 0")
 test("7.2*x^2 - 10.15*x + 1.5 = 0")
-test("x+x-x+x^2-10*x^2=0")
-test("x=0")
-test("5=7")
-test("A*x=0")
+#test("x+x-x+x^2-10*x^2=0")
+#test("x=0")
+#test("5=7")
+#test("A*x=0")
+#test("10.5*x^3-12=0")
+
+#test("x+-+x=10")
 
 
