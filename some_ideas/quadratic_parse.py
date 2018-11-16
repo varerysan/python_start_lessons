@@ -9,9 +9,49 @@
 
 import re
 
-text = " 10*x^2 + 20*x - 7 = 0"
+
+def parse(equation):
+    eq = re.sub(" ", "", equation)
+    t1, t2  = re.split("=", eq)
+
+    tokens = re.findall("[-\+]?[^\+-]+", t1)
+
+    data = []
+    for n in tokens:
+        if n:
+            if n[0] == "+":
+                token = {"sign": "+", "token": n[1:]}
+            elif n[0] == "-":
+                token = {"sign": "-", "token": n[1:]}
+            else:
+                token = {"sign": "+", "token": n}
+            data.append(token)    
+            
+    return data
+
+
+def test(text):
+    print("----------------")
+    print("eq={}=".format(text))
+    tokens = parse(text)
+    print("tokens=", tokens)
+
+    
+#-------------------------
+
+#text = " 10*x^2 + 20*x - 7 = 0"
 text = "-x^2-25=0"
-#text = "5*x*x - 10*x + 5 = 0"
+text = "5*x*x - 10*x + 5 = 0"
+
+
+test(" 10*x^2 + 20*x - 7 = 0")
+test("-x^2-25=0")
+test("5*x*x - 10*x + 5 = 0")
+
+print("=============================")
+
+
+
 
 t2 = re.sub(" ","",text)
 print("t2=",t2)
@@ -41,14 +81,27 @@ for n in t5:
             print("n={} sign=[{}]=".format(n,"+"))
             part = n[1:]
             print("part={}=".format(part))
+            token = {"sign": "+", "token": n[1:]}
         elif n[0] == "-":
             print("n={} sign=[{}]=".format(n,"-"))
             part = n[1:]
             print("part={}=".format(part))
+            token = {"sign": "-", "token": n[1:]}
+
         else:
             print("n={} sign=[{}]=".format(n,"+"))
             part = n
             print("part={}=".format(part))  
+            token = {"sign": "+", "token": n}
+            
+        data.append(token)
+
             
     print("---")
-    
+print("================")
+
+for d in data:
+    print("token:", d)
+    print("----------")
+
+
