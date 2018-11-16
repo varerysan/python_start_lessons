@@ -81,6 +81,14 @@ def solve(summa):
     if a == 0:
         # linear
         print("Linear")
+        if b != 0:
+            x = -c / b
+            print("x={}".format(x))
+        else:
+            if c == 0:
+                print("Any number")
+            else:
+                print("No roots. Bad eq.")
     else:
         d = b * b - 4 * a * c;
         if d > 0:
@@ -94,8 +102,6 @@ def solve(summa):
             print("No roots")
             
     
-    
-
 def test(text):
     
     try:
@@ -119,7 +125,15 @@ def test(text):
         print("Error bad token")
 
 
+print("========== Error tokens ============")
 test(" 10*x^2 + 20*x - 7 = 5") # error
+test("A*x=0")  # error
+test("x+-+x=10") # error
+test("--x^2+25=0") # error
+test("x==0") # error
+
+print("=========== Good tokens ================")
+
 test("-x^2-25=0")
 test("x^2-25=0")
 test("x^2-14*x+49=0")
@@ -130,10 +144,10 @@ test("7.2*x^2 - 10.15*x + 1.5 = 0")
 test("x+x-x+x^2-10*x^2=0")
 #test("x=0")
 #test("5=7")
-test("A*x=0")  # error
 #test("10.5*x^3-12=0")
 
-test("x+-+x=10") # error
-test("x==0")
+test("x-5=0")
+test("7=0")
+test("x=0")
 
 
