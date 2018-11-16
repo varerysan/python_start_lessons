@@ -37,7 +37,9 @@ def parse_tokens(tokens):
         dat = {'sign': t['sign']}
         for mul in re.split("\*", t['token']):
             try:
-                f = float(mul)
+                f = float(mul)  # Todo Add check in number exists
+                #if 'value' in dat:
+                    
                 dat['value'] = f
             except:
                 if (mul == 'x' or mul == 'x^2') and 'var' not in dat:
