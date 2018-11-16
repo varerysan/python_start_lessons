@@ -17,8 +17,6 @@ def parse(equation):
         
     tokens = re.findall("[-\+]?[^\+-]*", t1)
 
-    #print("tokens ===", tokens)
-
     data = []
     for n in tokens:
         if n:
@@ -42,12 +40,9 @@ def parse_tokens(tokens):
                 f = float(mul)
                 dat['value'] = f
             except:
-                if mul == 'x':
-                    dat['var'] = 'x'
-                elif mul == 'x^2':
-                    dat['var'] = 'x^2'
+                if (mul == 'x' or mul == 'x^2') and 'var' not in dat:
+                    dat['var'] = mul  
                 else:
-                    dat['error'] = True
                     raise Exception("BadToken")
         if 'value' not in dat:
             dat['value'] = 1
@@ -107,9 +102,9 @@ def test(text):
     try:
         print("\n\n------ Example -------")
         #print("eq[{}]\n".format(text))
-        print(text)
+        print("Equation:", text)
         tokens = parse(text)
-        #print("tokens=", tokens)
+        print("tokens=", tokens)
         data = parse_tokens(tokens)
         
         #print("------ parsed tokens -------")
@@ -125,14 +120,16 @@ def test(text):
         print("Error bad token")
 
 
-print("========== Error tokens ============")
+print("========== Test for error tokens ============")
 test(" 10*x^2 + 20*x - 7 = 5") # error
 test("A*x=0")  # error
 test("x+-+x=10") # error
 test("--x^2+25=0") # error
 test("x==0") # error
+test("x*x*x*x=0") # errro
+test("x*10*5+7=0") # errro
 
-print("=========== Good tokens ================")
+print("=========== Test for good tokens ================")
 
 test("-x^2-25=0")
 test("x^2-25=0")
@@ -149,5 +146,6 @@ test("x+x-x+x^2-10*x^2=0")
 test("x-5=0")
 test("7=0")
 test("x=0")
+
 
 
