@@ -11,7 +11,9 @@ def parse(equation):
     eq = re.sub(" ", "", equation)
     t1, t2  = re.split("=", eq)
 
-#    tokens = re.findall("[-\+]?[^\+-]+", t1)
+    if t2 != '0':
+        raise Exception("BadZeroEnd")
+        
     tokens = re.findall("[-\+]?[^\+-]*", t1)
 
     #print("tokens ===", tokens)
@@ -68,36 +70,49 @@ def sum_tokens(tokens):
     return data
                     
 
+def solve(summa):
+    a = summa["x^2"]
+    b = summa["x"]
+    c = summa["1"]
+    
+    print("a={}, b={}, c={}".format(a,b,c))
+    
+    
+
 def test(text):
     
     try:
         print("\n\n------ Example -------")
-        print("eq[{}]\n".format(text))
+        #print("eq[{}]\n".format(text))
+        print(text)
         tokens = parse(text)
-        print("tokens=", tokens)
+        #print("tokens=", tokens)
         data = parse_tokens(tokens)
         
-        print("------ parsed tokens -------")
-        for d in data:
-            print("d=", d)
+        #print("------ parsed tokens -------")
+        #for d in data:
+        #    print("d=", d)
             
         summa = sum_tokens(data)
         
-        print("summa=", summa)
+        #print("summa=", summa)
+        
+        solve(summa)
     except:
         print("Error bad token")
 
 
-test(" 10*x^2 + 20*x - 7 = 0")
+test(" 10*x^2 + 20*x - 7 = 5") # error
 test("-x^2-25=0")
 #test("5*x*x - 10*x + 5 = 0")
 test("7.2*x^2 - 10.15*x + 1.5 = 0")
 test("x+x-x+x^2-10*x^2=0")
 #test("x=0")
 #test("5=7")
-test("A*x=0")
+test("A*x=0")  # error
 #test("10.5*x^3-12=0")
 
-test("x+-+x=10")
+test("x+-+x=10") # error
+test("x==0")
 
 
