@@ -121,6 +121,9 @@ def test(text):
     except:
         print("Error bad token")
 
+for n in range(100):
+    string = input("Введите квадратное урвнение:")
+    test(string)
 
 print("========== Test for error tokens ============")
 test(" 10*x^2 + 20*x - 7 = 5") # error
