@@ -20,8 +20,5 @@ else:
              "Ноябрь",
              "Декабрь"]
     
-    print("Месяц:", names[month+1])
-    
-    
-    
-    
+    print("Месяц:", names[month-1])
+
