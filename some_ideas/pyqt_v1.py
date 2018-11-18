@@ -30,15 +30,30 @@ class MyWidget(QWidget):
         self._label = QLabel("Label-text", self)
         self._label.move(100,150)
         
- 
         self.show()
+        
+        
  
     @pyqtSlot()
     def on_click(self):
         print('PyQt5 button click. Test')
         self._label.setText("Hello")
-        self._label.adjustSize()
-        self._label.show()
+        #self._label.adjustSize()
+        #self._label.show()
+        #self.show()
+        self._label.repaint()
+        
+        px = self._label.x()
+        py = self._label.y()
+        
+        self._label.move(px+10, py)
+        
+        
+        #QWidget.update(self)    
+        self.repaint()
+      
+        
+        
         
  
 if __name__ == '__main__':
