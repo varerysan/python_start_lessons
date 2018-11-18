@@ -8,6 +8,10 @@ from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import pyqtSlot
 
 
+@pyqtSlot()
+def on_click(self):
+    print('PyQt5 button click')
+
 
 if __name__ == '__main__':
 
@@ -18,6 +22,8 @@ if __name__ == '__main__':
     button = QPushButton('PyQt5 button', w)
     button.setToolTip('This is an example button')
     button.move(100,70)
+    
+    button.clicked.connect(on_click)
     
     w.resize(250, 150)
     w.move(300, 300)
