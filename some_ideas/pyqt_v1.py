@@ -5,6 +5,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QPushButton, QLabel
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QPainter
 
 from threading import Thread
 import time
@@ -59,9 +60,13 @@ class MyWidget(QWidget):
         self._count += 1
         self._label.setText(text)
         
-        
-        
-      
+    def paintEvent(self, event):
+        qp = QPainter()
+        qp.begin(self)
+        qp.drawLine(10, 10, 300, 200)
+        #self.drawText(event, qp)
+        qp.end()
+           
 
 class Worker(Thread):
     def __init__(self, name, widget):
@@ -69,6 +74,11 @@ class Worker(Thread):
         Thread.__init__(self)
         self.name = name
         self._widget = widget
+        self._stop_state = False
+    
+    def need_stop(self):
+        self._stop_state = True
+        
     
     def run(self):
         """Запуск потока"""
@@ -76,10 +86,12 @@ class Worker(Thread):
         
         for n in range(500):
             time.sleep(0.2)
+            if self._stop_state:
+                print("Worker will stop")
+                break
             self._widget.set_info()
         
         
- 
 if __name__ == '__main__':
     print("Test-1")
     app = QApplication(sys.argv)
@@ -89,9 +101,22 @@ if __name__ == '__main__':
     wrk = Worker("aaa", ex)
     wrk.start()
     
+    print("Test-4")
     
+    result = app.exec_()
+    print("Test-5")
     
-    sys.exit(app.exec_())    
+    # stop thread
+    print("Before call stop function")
+    wrk.need_stop()
+    print("After call stop function")
+    wrk.join()    
+
+    print("Test-6")
+
+
+    sys.exit(result)    
+    print("Test-7")
     
 
 
