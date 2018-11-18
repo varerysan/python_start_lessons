@@ -6,6 +6,9 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QPushButton, QLabel
 from PyQt5.QtCore import pyqtSlot
 
+from threading import Thread
+import time
+
 
 class MyWidget(QWidget):
     
@@ -16,6 +19,7 @@ class MyWidget(QWidget):
         self.top = 10
         self.width = 320
         self.height = 200
+        self._count = 0
         self.initUI()
  
     def initUI(self):
@@ -32,7 +36,6 @@ class MyWidget(QWidget):
         
         self.show()
         
-        
  
     @pyqtSlot()
     def on_click(self):
@@ -48,16 +51,48 @@ class MyWidget(QWidget):
         
         self._label.move(px+10, py)
         
-        
         #QWidget.update(self)    
         self.repaint()
-      
         
+    def set_info(self):
+        text = str(self._count)
+        self._count += 1
+        self._label.setText(text)
+        
+        
+        
+      
+
+class Worker(Thread):
+    def __init__(self, name, widget):
+        """Инициализация потока"""
+        Thread.__init__(self)
+        self.name = name
+        self._widget = widget
+    
+    def run(self):
+        """Запуск потока"""
+        #amount = random.randint(3, 15)
+        
+        for n in range(500):
+            time.sleep(0.2)
+            self._widget.set_info()
         
         
  
 if __name__ == '__main__':
+    print("Test-1")
     app = QApplication(sys.argv)
+    print("Test-2")
     ex = MyWidget()
+    print("Test-3")
+    wrk = Worker("aaa", ex)
+    wrk.start()
+    
+    
+    
     sys.exit(app.exec_())    
     
+
+
+
