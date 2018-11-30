@@ -27,20 +27,20 @@ Python is an interpreted high-level programming language for general-purpose pro
 
 #print (text)
 
-words = re.findall("\w+", text)
+words = re.findall(r"\w+", text)
 print("--------All words ----------------")
 for w in words:
     print("={}=".format(w))
 print("----------------------------------")
 
-numbers = re.findall("\d+", text)
+numbers = re.findall(r"\d+", text)
 
 print("--------All numbers----------------")
 for n in numbers:
     print("={}=".format(n))
 print("----------------------------------")
 
-years = re.findall("(?:19|20)\d\d", text)
+years = re.findall(r"(?:19|20)\d\d", text)
 
 print("--------All years----------------")
 for n in years:
