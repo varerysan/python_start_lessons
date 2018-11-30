@@ -27,8 +27,22 @@ Python is an interpreted high-level programming language for general-purpose pro
 
 #print (text)
 
-words = re.findall("\w+",text)
-print("------------------------")
+words = re.findall("\w+", text)
+print("--------All words ----------------")
 for w in words:
     print("={}=".format(w))
-print("------------------------")
+print("----------------------------------")
+
+numbers = re.findall("\d+", text)
+
+print("--------All numbers----------------")
+for n in numbers:
+    print("={}=".format(n))
+print("----------------------------------")
+
+years = re.findall("(?:19|20)\d\d", text)
+
+print("--------All years----------------")
+for n in years:
+    print("={}=".format(n))
+print("----------------------------------")
