@@ -54,3 +54,31 @@ for w in words:
 
 for k,v in wordnums.items():
     print("{}:{}".format(k,v))
+
+# sort by number of words
+print("---------- sort ----------")
+print(wordnums.keys())
+
+words2 = [ [x,wordnums[x]] for x in wordnums ]
+
+print("------- words2 ----------")
+
+print(words2)
+
+words3 = sorted(words2, key=lambda wn: wn[1], reverse = True)
+
+print("------- words3 ----------")
+print(words3)
+
+print("------- words3 ----------")
+for w,n in words3:
+    print("{}:{}".format(w, n))
+
+
+#res1 = sorted(wordnums.keys, key=wordnums.get, reverse=True)
+
+
+#print("--------- Sorted words ----------")
+#print("res1=", res1)
+#for r in res1:
+#    print("")
