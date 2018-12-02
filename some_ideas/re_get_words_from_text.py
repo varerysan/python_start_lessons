@@ -46,3 +46,11 @@ print("--------All years----------------")
 for n in years:
     print("={}=".format(n))
 print("----------------------------------")
+
+# find nember of each words
+wordnums = {}
+for w in words:
+    wordnums[w] = wordnums.get(w,0) + 1
+
+for k,v in wordnums.items():
+    print("{}:{}".format(k,v))
