@@ -2,13 +2,13 @@ from math import sqrt
 import cProfile
 
 def is_prime_1(num):
-    return all(  num % n != 0 for n in range(2, int(sqrt(num)))  )
+    return all(  num % n != 0 for n in range(2, int(sqrt(num))+1)  )
 
 def is_prime_2(num):
-    return all(( num % n != 0 for n in range(2, int(sqrt(num)))) )
+    return all(( num % n != 0 for n in range(2, int(sqrt(num))+1)) )
 
 def is_prime_3(num):
-    return all([ num % n != 0 for n in range(2, int(sqrt(num)))] )
+    return all([ num % n != 0 for n in range(2, int(sqrt(num))+1)] )
 
 def test_prime_v1(count):
     prime_list = [x for x in range(2,count+1) if is_prime_1(x)]

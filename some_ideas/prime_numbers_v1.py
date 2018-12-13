@@ -7,3 +7,5 @@ def is_prime(num):
 for k in range(2,101):
     if is_prime(k):
         print(k)
+
+
