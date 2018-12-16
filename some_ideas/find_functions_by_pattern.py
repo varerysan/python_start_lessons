@@ -17,16 +17,25 @@ def func5_New():
     print("called func5_New");
 
 
+def find_funcs():
+    return  {k:v for k,v in globals().items() if callable(v) and k.endswith("_new")}
 
-obj_list = {k:v for k,v in globals().items() if callable(v) and k.endswith("_new")}
-for name, obj in obj_list.items():
-    print("name=", name, " obj=", obj)
+def print_funcs(funcs):
+    print("Found functions:")
+    for name, obj in funcs.items():
+        print("Function name=", name, " obj=", obj)
+    print()
+
+def call_funcs(funcs):
+    for name,f in funcs.items(): 
+        print("Call function '{}':".format(name))
+        f()
+        print()
 
 
-print("-------- call all new functions --------")
-
-for f in obj_list.values(): f()
-
+funcs = find_funcs()
+print_funcs(funcs)
+call_funcs(funcs)
 
     
     
