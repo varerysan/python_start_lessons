@@ -9,5 +9,5 @@ delta = dy - dn
 print(dy)
 print(dn)
 print(delta)
-
+print(delta.total_seconds())
 
