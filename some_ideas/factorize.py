@@ -6,7 +6,7 @@ divs = {}
 for k in range(2,n+1):
     while n % k == 0:
         divs[k] = divs.get(k,0) + 1
-        n = n / k
+        n = n // k
 
     if n == 1:
         break
