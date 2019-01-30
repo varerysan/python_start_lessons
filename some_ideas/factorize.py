@@ -1,4 +1,4 @@
-n = int(input("Number"))
+n = int(input("Number:"))
 
 divs = {}
 
